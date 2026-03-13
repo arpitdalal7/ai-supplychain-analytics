@@ -6,15 +6,6 @@
   <p><b>Automated Pipeline</b> • <b>15+ SCOR KPIs</b> • <b>Zero Manual Work</b></p>
 </div>
 
-<div align="center">
-  [![GitHub stars](https://img.shields.io/github/stars/arpitdalal7/ai-supplychain-analytics?style=social)](https://github.com/arpitdalal7/ai-supplychain-analytics)
-  [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=social&logo=linkedin)](https://linkedin.com/in/arpitdalal9)
-  [![n8n](https://img.shields.io/badge/n8n-Automation-EA4B71?style=flat&logo=n8n)](https://n8n.io)
-  [![Supabase](https://img.shields.io/badge/Supabase-DB-3ECF8E?style=flat&logo=supabase)](https://supabase.com)
-  [![Quadratic](https://img.shields.io/badge/Quadratic-AI-F3E5F5?style=flat&logo=plotly)](https://quadratic.to)
-</div>
-
----
 
 ## 📋 Navigation
 
