@@ -1,7 +1,3 @@
-
-```markdown
-<div align="center">
-
 # 🚀 AI-Driven Supply Chain Analytics
 
 ![Supply Chain Banner](https://img.shields.io/badge/Supply_Chain-Analytics-blue?style=for-the-badge)
