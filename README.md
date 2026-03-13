@@ -284,17 +284,9 @@ ai-supplychain-analytics/
 ├── quadratic/
 │   └── supply_chain_analysis.grid      # Quadratic workbook with AI prompts
 │
-├── scripts/
-│   ├── load_sample_data.py             # Load sample data into database
-│   └── validate_kpis.py                # Validate KPI calculations
-│
 ├── docs/
 │   ├── PROJECT_DOCUMENTATION.pdf       # Complete technical documentation
 │   └── screenshots/                    # Workflow and dashboard images
-│
-├── requirements.txt                    # Python dependencies
-├── .env.example                        # Environment variables template
-├── .gitignore
 └── README.md
 ```
 
