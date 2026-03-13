@@ -1,243 +1,459 @@
-```markdown
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/123456789/27987654-8b3d2f8a-64e5-11e7-9c8e-2a8c8b8c8b8c.png" width="100" alt="AI Supply Chain Analytics">
-  <h1>AI Supply Chain Analytics</h1>
-</div>
+# AI Supply Chain Analytics
 
-<p align="center">
-  <img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg">
-  <img alt="Python" src="https://img.shields.io/badge/Python-3.8+-blue.svg">
-  <img alt="n8n" src="https://img.shields.io/badge/n8n-Automation-orange.svg">
-  <img alt="Supabase" src="https://img.shields.io/badge/Supabase-DB-purple.svg">
-  <img alt="Quadratic" src="https://img.shields.io/badge/Quadratic-AI-green.svg">
-</p>
+[
+[
+[
 
-<div align="center">
-  <strong>
-    <a href="#overview">Overview</a>
-    | <a href="#features">Features</a>
-    | <a href="#tech-stack">Tech Stack</a>
-    | <a href="#quick-start">Quick Start</a>
-    | <a href="#usage">Usage</a>
-    | <a href="#structure">Structure</a>
-    | <a href="#contributing">Contributing</a>
-    | <a href="#license">License</a>
-    | <a href="#contact">Contact</a>
-  </strong>
-</div>
+An end-to-end **AI-powered supply chain analytics system** that automates data collection, performs intelligent analysis, and generates actionable insights to optimize supply chain operations, improve delivery performance, and reduce operational costs.
 
----
+***
 
-## Overview {#overview}
+## 📋 Overview
 
-**AI Supply Chain Analytics** is an automated pipeline that transforms raw order data into actionable supply chain insights using modern AI tools.
+This project demonstrates a modern approach to supply chain management by leveraging AI and automation tools to solve real-world operational challenges. The system automatically:
 
-**What it does:**
-```
-Email (CSV) → n8n Automation → Supabase DB → Quadratic AI → Business Insights
-```
+- **Collects** order data from email attachments
+- **Stores** data in a cloud PostgreSQL database
+- **Cleans** and transforms data using AI-generated Python code
+- **Analyzes** supply chain performance through 15+ KPIs
+- **Generates** business insights and recommendations
 
-**Business Value:**
-- ✅ **15+ Supply Chain KPIs** (OTIF, Fill Rates, Cycle Time)
-- ✅ **Zero manual data entry** - fully automated
-- ✅ **10-15x faster analysis** using AI prompts
-- ✅ **Real-time monitoring** of delivery performance
+### Business Problem
 
----
+Supply chain operations often face challenges like:
+- Late deliveries impacting customer satisfaction
+- Incomplete order fulfillment causing revenue loss
+- Lack of real-time visibility into performance metrics
+- Manual data processing leading to delays and errors
 
-## Features {#features}
+### Solution
 
-### 🚀 Key Capabilities
-- **Automated Data Collection** - Email → Database in 2 minutes
-- **AI Data Cleaning** - Natural language prompts generate Python code
-- **Supply Chain KPIs** - OTIF%, On-Time, In-Full, Backorders, Cycle Time
-- **Business Insights** - Customer gaps, product issues, demand patterns
-- **Multi-currency** - USD ↔ INR conversion for global operations
+This automated analytics pipeline provides:
+- **Real-time monitoring** of supply chain KPIs (OTIF, Fill Rates, Cycle Time)
+- **Predictive insights** for demand planning and inventory optimization
+- **Automated reporting** reducing manual effort by 10-15x
+- **Data-driven recommendations** for operational improvements
 
-### 📊 Calculated Metrics
-| KPI | Purpose |
-|-----|---------|
-| **OTIF%** | On-Time + In-Full (most important) |
-| **Line Fill Rate** | Perfect line fulfillment |
-| **Volume Fill Rate** | Total quantity delivered |
-| **Cycle Time** | Order to delivery speed |
-| **Backorder Qty** | Unfulfilled demand |
+***
 
----
+## ✨ Features
 
-## Tech Stack {#tech-stack}
+### Core Capabilities
 
-```
-Automation: n8n + Gmail API
-Database: Supabase (PostgreSQL)
-Analytics: Quadratic (AI Spreadsheet)
-Data: Python + pandas + SQL
-```
+- **🤖 Workflow Automation**
+  - Automated email monitoring and CSV extraction using n8n
+  - Zero-touch data ingestion from vendors to database
+  - Scheduled data pipeline execution
 
-**No complex DevOps required** - all tools have free tiers!
+- **📊 Supply Chain KPIs**
+  - On-Time Delivery % (OT%)
+  - In-Full Delivery % (IF%)
+  - On-Time-In-Full % (OTIF%) - Primary success metric
+  - Line Fill Rate & Volume Fill Rate
+  - Order Cycle Time & Delivery Delay Analysis
+  - Backorder Tracking & Lead Time Variability
 
----
+- **🧹 AI-Powered Data Processing**
+  - Natural language prompts generate Python cleaning code
+  - Automatic data type conversion and validation
+  - Multi-table merging and feature engineering
+  - Currency conversion (USD ↔ INR) for cross-country operations
 
-## Quick Start {#quick-start}
+- **📈 Business Intelligence**
+  - Customer performance analysis (OTIF gaps, revenue loss)
+  - Product category fulfillment trends
+  - Metro vs Non-Metro service level comparison
+  - Demand variability and supply chain bottleneck identification
 
-### 1. Clone & Setup
+- **🎯 Interactive Dashboards**
+  - Real-time KPI monitoring
+  - Custom visualizations using AI-generated charts
+  - Drill-down capabilities for root cause analysis
+
+***
+
+## 🛠️ Tech Stack
+
+### Automation & Workflow
+- **n8n** - No-code workflow automation platform
+- **Gmail API** - Email monitoring and attachment extraction
+
+### Database & Backend
+- **PostgreSQL** - Relational database for structured data storage
+- **Supabase** - Managed PostgreSQL hosting with real-time APIs
+- **SQL** - Data querying and transformation
+
+### Analytics & AI
+- **Quadratic** - AI-powered spreadsheet with Python/SQL support
+- **Python** - Data processing and analysis
+  - `pandas` - Data manipulation
+  - `numpy` - Numerical computing
+  - `matplotlib` / `plotly` - Visualization
+  - `requests` - API integration for exchange rates
+
+### Data Modeling
+- **Star Schema** - Dimensional modeling (Fact & Dimension tables)
+- **ETL Pipeline** - Extract, Transform, Load architecture
+
+***
+
+## 📦 Installation
+
+### Prerequisites
+
+- Python 3.8 or higher
+- PostgreSQL database (or Supabase account)
+- n8n instance (cloud or self-hosted)
+- Quadratic account (free tier available)
+
+### Step 1: Clone the Repository
+
 ```bash
 git clone https://github.com/arpitdalal7/ai-supplychain-analytics.git
 cd ai-supplychain-analytics
 ```
 
-### 2. Database (Supabase)
-1. Create free account: [supabase.com](https://supabase.com)
-2. Run `database/schema.sql`
-3. Note connection string
+### Step 2: Set Up Python Environment
 
-### 3. n8n Workflow
-1. Start n8n: `npx n8n`
-2. Import `workflows/email_to_database.json`
-3. Add Gmail + Supabase credentials
-
-### 4. Load Sample Data
 ```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+### Step 3: Configure Database
+
+1. **Create Supabase Project**
+   - Sign up at [supabase.com](https://supabase.com)
+   - Create new project and note connection string
+
+2. **Run Database Schema**
+   ```bash
+   psql -h <your-supabase-host> -U postgres -d postgres -f database/schema.sql
+   ```
+
+3. **Update Configuration**
+   - Copy `.env.example` to `.env`
+   - Add your database credentials:
+     ```
+     DB_HOST=your-supabase-host
+     DB_PORT=5432
+     DB_NAME=postgres
+     DB_USER=postgres
+     DB_PASSWORD=your-password
+     ```
+
+### Step 4: Set Up n8n Workflow
+
+1. **Install n8n** (choose one method):
+   ```bash
+   # Option 1: npm
+   npm install n8n -g
+   
+   # Option 2: Docker
+   docker run -it --rm --name n8n -p 5678:5678 n8nio/n8n
+   ```
+
+2. **Import Workflow**
+   - Open n8n at `http://localhost:5678`
+   - Go to Workflows → Import from File
+   - Select `workflows/email_to_database.json`
+
+3. **Configure Credentials**
+   - Add Gmail credentials for email monitoring
+   - Add PostgreSQL credentials pointing to Supabase
+
+### Step 5: Set Up Quadratic
+
+1. Create account at [quadratichq.com](https://quadratichq.com)
+2. Connect to your Supabase database
+3. Import `quadratic/supply_chain_analysis.grid` workbook
+
+***
+
+## 🚀 Usage
+
+### Running the Data Pipeline
+
+#### 1. Start n8n Workflow
+
+```bash
+# Start n8n
+n8n start
+
+# The workflow will automatically:
+# - Monitor Gmail inbox for vendor emails
+# - Extract CSV attachments
+# - Load data into PostgreSQL tables
+```
+
+#### 2. Load Sample Data (Optional)
+
+```bash
+# Load sample order data
 python scripts/load_sample_data.py
+
+# This will populate:
+# - fact_orders_aggregate
+# - fact_order_line
+# - dim_customers
+# - dim_products
 ```
 
-### 5. Analyze with Quadratic
-1. Open [quadratichq.com](https://quadratichq.com)
-2. Connect Supabase database
-3. Import `quadratic/supply_chain_analysis.grid`
-4. Run AI prompts!
+#### 3. Run Data Cleaning & Analysis
 
----
+Open Quadratic and execute AI prompts:
 
-## Usage {#usage}
-
-### Step-by-Step Analysis
-
-**1. Calculate KPIs:**
+**Create Date Table:**
 ```
-"Create KPIs: Total Orders, OTIF%, Line Fill Rate, Volume Fill Rate, Cycle Time"
+Create a date table that has dates from 03-01-2025 to 05-31-2025
 ```
 
-**2. Top Customers:**
+**Create Exchange Rate Table:**
 ```
-"Show top 5 customers by order value with OTIF%, city, customer name"
-```
-
-**3. Problem Areas:**
-```
-"Find product categories with highest backorders and lowest in_full%"
+Create exchange_rate table for March 1 to May 17, 2025 
+using Open Exchange Rates API
 ```
 
-**4. Metro vs Non-Metro:**
+**Generate fact_summary Table:**
 ```
-"Compare Metro vs Non-Metro: in_full%, on_time%, cycle_time, backorders"
+Create Python code that:
+1. Loads data from fact_order_line, dim_products, dim_customers, exchange_rate
+2. Cleans data (convert IDs to integers, remove nulls, standardize dates)
+3. Merges tables on product_id, customer_id, order_placement_date
+4. Calculates total_amount_inr (handles USD/INR conversion)
+5. Creates calculated columns: backorder_qty, order_cycle_time_days, 
+   delivery_delay_days, in_full_percent, on_time_flag
 ```
 
----
+#### 4. Calculate Supply Chain KPIs
 
-## Project Structure {#structure}
+```
+Create the following KPIs:
+1. Total Order Lines
+2. Line Fill Rate
+3. Volume Fill Rate
+4. Total Orders
+5. On Time Delivery %
+6. In Full Delivery %
+7. On Time In Full %
+8. Order Cycle Time
+9. Backorder Rate
+10. Lead Time Variability
+```
+
+#### 5. Generate Business Insights
+
+```
+Show top 5 customers based on order value and their OTIF%, IF%, OT%.
+Include customer_name, customer_id, and city
+```
+
+```
+Filter the most recent 4 weeks. Aggregate by category: 
+total backorder_qty, average in_full_percent, and average delivery_delay_days.
+Return the five categories with highest backorder_qty
+```
+
+***
+
+## 📊 Project Structure
 
 ```
 ai-supplychain-analytics/
-├── data/                 # Sample CSV files
-├── database/             # Schema & seed data
-│   └── schema.sql
-├── workflows/            # n8n automation
-│   └── email_to_db.json
-├── quadratic/            # AI analysis workbook
-│   └── analysis.grid
-├── scripts/              # Python utilities
-│   └── load_data.py
-├── docs/                 # Documentation
+│
+├── data/
+│   ├── sample_order_aggregate.csv       # Sample order-level data
+│   └── sample_order_line.csv           # Sample line-item data
+│
+├── database/
+│   ├── schema.sql                      # Database table definitions
+│   └── seed_data.sql                   # Initial dimension table data
+│
+├── workflows/
+│   └── email_to_database.json          # n8n workflow configuration
+│
+├── quadratic/
+│   └── supply_chain_analysis.grid      # Quadratic workbook with AI prompts
+│
+├── scripts/
+│   ├── load_sample_data.py             # Load sample data into database
+│   └── validate_kpis.py                # Validate KPI calculations
+│
+├── docs/
+│   ├── PROJECT_DOCUMENTATION.pdf       # Complete technical documentation
+│   └── screenshots/                    # Workflow and dashboard images
+│
+├── requirements.txt                    # Python dependencies
+├── .env.example                        # Environment variables template
+├── .gitignore
 └── README.md
 ```
 
----
+***
 
-## Screenshots
+## 📈 Key Performance Indicators (KPIs)
 
-### n8n Workflow
-![Workflow](docs/screenshots/n8n-workflow.png)
+### Delivery Performance
 
-### Data Cleaning (AI Prompt)
-![Data Cleaning](docs/screenshots/data-cleaning.png)
+| KPI | Formula | Industry Benchmark |
+|-----|---------|-------------------|
+| **On-Time Delivery %** | (On-time orders / Total orders) × 100 | 90%+ |
+| **In-Full Delivery %** | (Complete orders / Total orders) × 100 | 95%+ |
+| **OTIF %** | (On-time AND In-full / Total orders) × 100 | 85%+ |
 
-### KPI Dashboard
-![KPIs](docs/screenshots/kpi-dashboard.png)
+### Operational Efficiency
 
-### Business Insights
-![Insights](docs/screenshots/business-questions.png)
+| KPI | Description | Target |
+|-----|-------------|--------|
+| **Line Fill Rate** | % of order lines delivered completely | 95%+ |
+| **Volume Fill Rate** | % of ordered quantity delivered | 98%+ |
+| **Order Cycle Time** | Avg days from order to delivery | < 5 days |
 
----
+### Risk & Variability
 
-## Contributing {#contributing}
+| KPI | Measurement | Interpretation |
+|-----|------------|----------------|
+| **Lead Time Variability** | Std dev of cycle times | Lower = more reliable |
+| **Demand Variability** | Weekly quantity fluctuation | Informs safety stock |
+| **Backorder Rate** | % of lines with backorders | < 5% acceptable |
 
-1. **Fork** the repository
-2. **Create** feature branch: `git checkout -b feature/amazing-feature`
-3. **Commit** changes: `git commit -m 'Add: amazing feature'`
-4. **Push** to branch: `git push origin feature/amazing-feature`
-5. **Open Pull Request**
+***
 
-**Guidelines:**
-- Write clear commit messages
-- Add comments to complex code
-- Update documentation
-- Test before submitting
+## 🎓 Learning Outcomes
 
----
+This project demonstrates proficiency in:
 
-## License {#license}
+- **Workflow Automation** - Building no-code data pipelines with n8n
+- **Database Design** - Implementing star schema for analytics
+- **ETL Development** - Extracting, transforming, loading supply chain data
+- **AI Integration** - Leveraging AI for code generation and analysis
+- **Business Analytics** - Calculating and interpreting supply chain KPIs
+- **Data Visualization** - Creating actionable dashboards
+- **Problem Solving** - Translating business problems into technical solutions
 
-This project is licensed under the [MIT License](LICENSE).
+***
+
+## 🤝 Contributing
+
+Contributions are welcome! Here's how you can help:
+
+### Reporting Issues
+
+- Use GitHub Issues to report bugs or suggest features
+- Provide detailed description, steps to reproduce, and expected behavior
+
+### Making Contributions
+
+1. **Fork the repository**
+   ```bash
+   # Click "Fork" button on GitHub
+   ```
+
+2. **Create a feature branch**
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+3. **Make your changes**
+   - Follow existing code style
+   - Add comments for complex logic
+   - Update documentation if needed
+
+4. **Commit your changes**
+   ```bash
+   git add .
+   git commit -m "Add: Brief description of changes"
+   ```
+
+5. **Push to your fork**
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+6. **Create Pull Request**
+   - Go to original repository on GitHub
+   - Click "New Pull Request"
+   - Select your fork and branch
+   - Describe your changes clearly
+
+### Development Guidelines
+
+- Write clear, self-documenting code
+- Include docstrings for Python functions
+- Test your changes before submitting
+- Update README if adding new features
+- Ensure backward compatibility
+
+***
+
+## 📝 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ```
-MIT License - Free to use, modify, and distribute
+MIT License
+
 Copyright (c) 2026 Arpit Dalal
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```
 
----
+***
 
-## Acknowledgments {#acknowledgments}
+## 🙏 Acknowledgments
 
-**Special thanks to:**
+- **Codebasics YouTube Channel** - For comprehensive tutorials and project guidance on supply chain analytics
+- **n8n Community** - For workflow automation best practices
+- **Quadratic Team** - For pioneering AI-powered spreadsheet technology
+- **Supabase** - For reliable PostgreSQL hosting and developer-friendly tools
 
-<div align="center">
-  <a href="https://www.youtube.com/c/codebasics">
-    <img src="https://img.shields.io/badge/Codebasics-YouTube-red?style=for-the-badge&logo=youtube" alt="Codebasics">
-  </a>
-</div>
+***
 
-**Codebasics YouTube Channel** - Project mentoring, tutorials, and supply chain analytics challenges.
-
----
-
-## Contact {#contact}
+## 📧 Project Creator
 
 **Arpit Dalal**
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/arpitdalal9/)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-black?style=for-the-badge&logo=github)](https://github.com/arpitdalal7)
+- 💼 **LinkedIn:** [linkedin.com/in/arpitdalal9](https://www.linkedin.com/in/arpitdalal9/)
+- 🐙 **GitHub:** [github.com/arpitdalal7](https://github.com/arpitdalal7)
+- 📂 **Repository:** [ai-supplychain-analytics](https://github.com/arpitdalal7/ai-supplychain-analytics)
 
-**Repository:** [arpitdalal7/ai-supplychain-analytics](https://github.com/arpitdalal7/ai-supplychain-analytics)
+***
+
+## 🌟 Star This Repository
+
+If you find this project helpful, please consider giving it a ⭐ on GitHub. It helps others discover the project and motivates continued development!
+
+***
 
 <div align="center">
-  <br>
-  ⭐ **Star this repo if you found it helpful!**
-  <br><br>
-  <img src="https://user-images.githubusercontent.com/123456789/27987654-8b3d2f8a-64e5-11e7-9c8e-2a8c8b8c8b8c.png" width="200">
+
+**Built with 🧠 AI -  ⚡ Automation -  📊 Data**
+
+*Transforming supply chain operations through intelligent analytics*
+
 </div>
-```
-
-**Ready to copy-paste directly into GitHub!** 
-
-This simplified version includes:
-✅ **Clickable table of contents** at top
-✅ **All essential sections** in compact format
-✅ **Professional badges** and styling
-✅ **Clear quick-start** instructions
-✅ **Image placeholders** ready for screenshots
-✅ **MIT License** included
-✅ **Codebasics credits**
-✅ **Perfect for recruiters** - shows skills + results
-
-Just add your screenshot images to `docs/screenshots/` folder and update the image paths
