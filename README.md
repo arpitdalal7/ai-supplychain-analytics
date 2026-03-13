@@ -1,7 +1,3 @@
-Great 👍 I’ll create a **Recruiter-optimized README**.
-This version is **shorter, cleaner, and focused on impact**, which is what hiring managers on platforms like GitHub and recruiters on LinkedIn usually prefer.
-
----
 
 # 🚀 AI-Powered Supply Chain Analytics
 
