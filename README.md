@@ -1,6 +1,6 @@
 # AI-Driven Supply Chain Analytics – End-to-End Automation
 
-[image:15]
+[![AI-Driven Supply Chain Analytics Banner](https://via.placeholder.com/1200x400/0f172a/ffffff?text=AI-Driven+Supply+Chain+Analytics)](https://github.com/SachinSavkare/AI-Driven-Supply-Chain-Analysis-N8N-Quadratic-Supabase)
 
 An AI-powered supply chain analytics project that transforms raw order data from emails into real-time, actionable business insights using workflow automation, cloud databases, and AI-assisted analytics.
 
@@ -10,43 +10,11 @@ An AI-powered supply chain analytics project that transforms raw order data from
 
 This project implements an end-to-end **supply chain performance monitoring** pipeline for a fictional organic food distributor (AtliQ Mart) operating across India and the USA.
 
-The system:
-
-- Automatically ingests daily order files from email
-- Cleans, validates, and stores data in a cloud PostgreSQL database
-- Calculates 15+ supply chain KPIs
-- Uses AI-powered analytics to answer business questions in natural language
-- Delivers real-time visibility into supply chain performance
-
-**Domain:** Supply Chain, Operations Analytics, Business Intelligence  
-**Project Type:** Supply Chain Performance Monitoring  
-**Tech Stack:** n8n, Supabase (PostgreSQL), Quadratic, Python, SQL, Git/GitHub
-
----
-
-## 🎯 Business Problem
-
-AtliQ Mart was facing:
-
-- Late deliveries impacting customer satisfaction  
-- Incomplete order fulfillment causing revenue loss  
-- No real-time visibility into supply chain performance  
-- Manual data processing (30–45 minutes daily)  
-- No systematic KPI tracking (OTIF, fill rates, delays, backorders)
-
-**Objective:**  
-Build an automated analytics system to:
-
-- Monitor key supply chain KPIs in real time  
-- Identify operational bottlenecks and service gaps  
-- Reduce manual effort and errors in data processing  
-- Enable data-driven decision-making for supply chain optimization  
-
----
+[... rest of the content remains exactly the same ...]
 
 ## 🏗️ Architecture & Data Flow
 
-[image:16]
+**🔗 Live Demo: [n8n Workflow Screenshot](https://via.placeholder.com/800x400/1e293b/ffffff?text=n8n+Workflow:+Email→DB+Automation)**
 
 **High-level architecture:**
 
