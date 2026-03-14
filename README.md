@@ -1,4 +1,3 @@
-```markdown
 # AI-Driven Supply Chain Analytics – End-to-End Automation
 
 An AI-powered supply chain analytics project that transforms raw order data from emails into real-time, actionable business insights using workflow automation, cloud databases, and AI-assisted analytics.
