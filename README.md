@@ -1,5 +1,7 @@
 # AI-Driven Supply Chain Analytics – End-to-End Automation
 
+[image:15]
+
 An AI-powered supply chain analytics project that transforms raw order data from emails into real-time, actionable business insights using workflow automation, cloud databases, and AI-assisted analytics.
 
 ---
@@ -43,6 +45,8 @@ Build an automated analytics system to:
 ---
 
 ## 🏗️ Architecture & Data Flow
+
+[image:16]
 
 **High-level architecture:**
 
@@ -99,7 +103,7 @@ Data transformations handled via AI-generated Python and SQL:
 
 **Example prompt used in Quadratic:**
 
-> “Create Python code that loads data from `fact_order_line`, `dim_products`, `dim_customers`, and `exchange_rate`, cleans IDs, merges tables, and calculates total amounts in INR.”
+> "Create Python code that loads data from `fact_order_line`, `dim_products`, `dim_customers`, and `exchange_rate`, cleans IDs, merges tables, and calculates total amounts in INR."
 
 This reduces manual coding time from ~30 minutes to ~2 minutes per transformation.
 
@@ -135,9 +139,9 @@ The pipeline automatically computes **15+ KPIs**, including:
 
 ### OTIF – Core Metric
 
-\[
-\text{OTIF} = \frac{\text{Orders delivered on time AND in full}}{\text{Total Orders}} \times 100
-\]
+```
+OTIF = (Orders delivered on time AND in full) / Total Orders × 100
+```
 
 **Benchmarks:**
 
@@ -286,8 +290,8 @@ You can adjust this to match your actual file layout.
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/<your-username>/<your-repo-name>.git
-cd <your-repo-name>
+git clone https://github.com/SachinSavkare/AI-Driven-Supply-Chain-Analysis-N8N-Quadratic-Supabase.git
+cd AI-Driven-Supply-Chain-Analysis-N8N-Quadratic-Supabase
 ```
 
 2. **Set up Supabase / PostgreSQL**
@@ -333,24 +337,24 @@ Planned / possible extensions:
 
 ## 📚 Learning & Takeaways
 
-- Automation is essential: Manual data handling doesn’t scale.  
+- Automation is essential: Manual data handling doesn't scale.  
 - AI is a **productivity accelerator**, not a replacement for fundamentals.  
 - Good data architecture (star schema, clean joins) is critical for fast analytics.  
 - Understanding business context (OTIF, fill rates, service levels) is what converts dashboards into real business value.
 
 ---
 
-## 📎 References & Credits
+## 🤝 Connect
 
-- Project inspired by Codebasics’ end-to-end analytics curriculum  
-- Tools used: n8n, Supabase, Quadratic, Python, SQL, Git/GitHub  
+**Connect on LinkedIn:** [Arpit Dalal](https://www.linkedin.com/in/arpitdalal9/)
 
 ---
 
-## 🤝 Connect
+## 📎 License & Credits
 
-If you’d like to discuss supply chain analytics, workflow automation, or AI-assisted data projects, feel free to connect with me on LinkedIn.
+**Tools Used:** [n8n](https://n8n.io/) | [Supabase](https://supabase.com/) | [Quadratic](https://quadratic.to/) | [PostgreSQL](https://www.postgresql.org/)
 
-```  
+**Developed by:** [Arpit Dalal](https://www.linkedin.com/in/arpitdalal9/)  
+© 2025 Supply Chain Analytics Portfolio Project
 
-You can now paste this directly into `README.md` in your GitHub repo and then customize small parts like the repo URL, your name, and your LinkedIn profile link.
+
