@@ -1,278 +1,357 @@
-<div align="center">
-  <img src="https://github.com/arpitdalal7/ai-supplychain-analytics/raw/main/banner.png" alt="AI Supply Chain Analytics" width="100%"/>
-  
-  <h1>🧠 AI-Driven Supply Chain Analytics</h1>
-  
-  <p><b>Automated Pipeline</b> • <b>15+ SCOR KPIs</b> • <b>Zero Manual Work</b></p>
-</div>
+```markdown
+# AI-Driven Supply Chain Analytics – End-to-End Automation
 
-<div align="center">
-  [![GitHub stars](https://img.shields.io/github/stars/arpitdalal7/ai-supplychain-analytics?style=social)](https://github.com/arpitdalal7/ai-supplychain-analytics)
-  [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=social&logo=linkedin)](https://linkedin.com/in/arpitdalal9)
-  [![n8n](https://img.shields.io/badge/n8n-Automation-EA4B71?style=flat&logo=n8n)](https://n8n.io)
-  [![Supabase](https://img.shields.io/badge/Supabase-DB-3ECF8E?style=flat&logo=supabase)](https://supabase.com)
-  [![Quadratic](https://img.shields.io/badge/Quadratic-AI-F3E5F5?style=flat&logo=plotly)](https://quadratic.to)
-</div>
+An AI-powered supply chain analytics project that transforms raw order data from emails into real-time, actionable business insights using workflow automation, cloud databases, and AI-assisted analytics.
 
 ---
 
-## 📋 Navigation
+## 📌 Project Overview
 
-| 🚀 Overview | 🏗️ Architecture | ⚡ n8n | 🧹 Cleaning | 📊 KPIs | 💡 Insights | 🚀 Setup |
-|-------------|-----------------|-------|-------------|---------|-------------|----------|
-| [#overview](#overview) | [#architecture](#architecture) | [#n8n](#n8n) | [#cleaning](#cleaning) | [#kpis](#kpis) | [#insights](#insights) | [#setup](#setup) |
+This project implements an end-to-end **supply chain performance monitoring** pipeline for a fictional organic food distributor (AtliQ Mart) operating across India and the USA.
 
----
+The system:
 
-## 🚀 Overview {#overview}
+- Automatically ingests daily order files from email
+- Cleans, validates, and stores data in a cloud PostgreSQL database
+- Calculates 15+ supply chain KPIs
+- Uses AI-powered analytics to answer business questions in natural language
+- Delivers real-time visibility into supply chain performance
 
-**AtliQ Mart** (FMCG company) needed **supply chain visibility** across **India + USA**.
-
-**The Challenge:**
-```
-📧 Manual CSV emails → ❌ 45min processing
-📊 No real-time OTIF → ❌ Poor decisions
-📈 No demand patterns → ❌ Inventory issues
-```
-
-**The Solution:**
-```
-📧 Emails → ⚡ n8n → 🗄️ Supabase → 🤖 Quadratic AI → 📊
-```
-
-**Results Delivered:**
-- **15 SCOR KPIs** calculated automatically
-- **OTIF%** real-time monitoring (78% → Target 85%)
-- **Backorder alerts** by category
-- **Metro vs Non-Metro** service gaps (-14% In-Full)
-- **12x faster** analysis (45min → 2min)
+**Domain:** Supply Chain, Operations Analytics, Business Intelligence  
+**Project Type:** Supply Chain Performance Monitoring  
+**Tech Stack:** n8n, Supabase (PostgreSQL), Quadratic, Python, SQL, Git/GitHub
 
 ---
 
-## 🏗️ Architecture {#architecture}
+## 🎯 Business Problem
 
-```mermaid
-graph TB
-    A[📧 Vendor Emails<br/>CSV Attachments] --> B[⚡ n8n Gmail Trigger]
-    B --> C[📎 Extract CSVs<br/>Aggregate + Line Items]
-    C --> D[🔄 Parse CSV→JSON<br/>Data Validation]
-    D --> E[🗄️ Supabase PostgreSQL<br/>Star Schema]
-    E --> F[🤖 Quadratic AI<br/>Natural Language Prompts]
-    F --> G[📊 15 KPIs + Charts]
-    F --> H[💡 Business Insights]
-    
-    style A fill:#e1f5fe
-    style B fill:#fff3cd
-    style E fill:#d4edda
-    style F fill:#f8d7da
-    style G fill:#d1ecf1
-    style H fill:#fff3cd
-```
+AtliQ Mart was facing:
 
-**End-to-End Flow:** **Emails → Insights in 2 minutes**
+- Late deliveries impacting customer satisfaction  
+- Incomplete order fulfillment causing revenue loss  
+- No real-time visibility into supply chain performance  
+- Manual data processing (30–45 minutes daily)  
+- No systematic KPI tracking (OTIF, fill rates, delays, backorders)
+
+**Objective:**  
+Build an automated analytics system to:
+
+- Monitor key supply chain KPIs in real time  
+- Identify operational bottlenecks and service gaps  
+- Reduce manual effort and errors in data processing  
+- Enable data-driven decision-making for supply chain optimization  
 
 ---
 
-## ⚡ n8n Automation {#n8n}
+## 🏗️ Architecture & Data Flow
 
-**Complete Workflow:**
+**High-level architecture:**
 
-![n8n Workflow](https://github.com/arpitdalal7/ai-supplychain-analytics/raw/main/screenshots/workflow.png)
+`Email (CSV) → n8n (Automation) → Supabase (PostgreSQL) → Quadratic (AI Analytics) → Business Insights`
 
-**Daily Automation (Zero Manual Work):**
-```
-1. Gmail Trigger ← Monitors vendor emails 24/7
-2. Extract Files ← Order Aggregate + Line Items CSVs
-3. CSV Parser ← Converts to structured JSON
-4. Data Validation ← Removes duplicates/nulls
-5. PostgreSQL Insert ← fact_aggregate + fact_order_line
-```
+### 1. Data Ingestion (Email → n8n)
 
-**Benefits:**
-- **100% automated** - no manual downloads
-- **2-minute** data availability  
-- **Error notifications** built-in
-- **Scales** with growing data volume
+- Vendors send daily CSV files:
+  - Order Aggregate
+  - Order Line Items
+- n8n workflow:
+  - Monitors Gmail inbox for vendor emails
+  - Downloads CSV attachments automatically
+  - Converts CSV to structured JSON
+  - Validates schema and data types
+  - Pushes data into PostgreSQL tables
 
----
+### 2. Database Layer (Supabase – PostgreSQL)
 
-## 🧹 AI Data Cleaning {#cleaning}
+Implemented a **star schema** optimized for analytics:
 
-**Quadratic AI Magic:**
+- **Fact tables**
+  - `fact_orders_aggregate` – order-level metrics
+  - `fact_order_line` – product-level order details
+- **Dimension tables**
+  - `dim_customers` – customer master data (ID, name, city, country)
+  - `dim_products` – product catalog with multi-currency pricing
+  - `dim_date` – standard date dimension
+  - `dim_target_orders` – performance benchmarks/targets
+- **Supporting tables**
+  - `exchange_rate` – USD ↔ INR conversion
+  - `fact_summary` – merged analytics table for KPI reporting
 
-**Single Prompt → Complete Pipeline:**
+### 3. Analytics Layer (Quadratic + Python + SQL)
 
-```
-"Load: fact_order_line + dim_products + dim_customers + exchange_rate
-Clean: IDs→integers, strip whitespace, fix dates, drop nulls
-Merge: orders×products×customers×rates
-Calculate: backorder_qty, cycle_time, in_full%, OTIF flags
-Output: fact_summary table"
-```
-
-![AI Cleaning Process](https://github.com/arpitdalal7/ai-supplychain-analytics/raw/main/screenshots/data-cleaning.png)
-
-**Auto-Generated Columns:**
-```
-backorder_qty = order_qty - delivery_qty
-order_cycle_time_days = delivery - placement
-delivery_delay_days = actual - agreed
-in_full_percent = (delivery_qty/order_qty)×100
-on_time_flag = 1 if on_time else 0
-```
-
-**Result:** **Clean analytics-ready table** in **3 minutes**.
+- AI-powered spreadsheet environment
+- Runs SQL and Python on top of Supabase data
+- Natural language prompts generate analysis code
+- Automates KPI calculations and visualization
+- Enables ad-hoc analysis via conversational queries
 
 ---
 
-## 📊 15 Supply Chain KPIs {#kpis}
+## 🧹 Data Processing & AI Assistance
 
-**SCOR Framework Metrics** calculated automatically:
+Data transformations handled via AI-generated Python and SQL:
 
-| KPI | Formula | Industry Target | Status |
-|-----|---------|-----------------|--------|
-| **OTIF%** | On-Time **AND** In-Full | **85%+** | 🟡 **78%** |
-| **Line Fill Rate** | Complete lines/total | **95%+** | 🟢 **92%** |
-| **Volume Fill Rate** | Delivered qty/ordered | **98%+** | 🟢 **94%** |
-| **Order Cycle Time** | Order→Delivery (days) | **<5 days** | 🔴 **6.2 days** |
-| **Avg Delivery Delay** | Late orders only | **<2 days** | 🔴 **3.1 days** |
-| **Backorder Qty** | ∑(order-delivery) | **Minimize** | 🔴 **4,090 units** |
-| **Lead Time Variability** | STDEV(cycle time) | **<3 days** | ⚠️ **4.2 days** |
+- Convert IDs (e.g., `product_id`, `customer_id`) to integers  
+- Remove rows with NULL/invalid values  
+- Standardize date formats to datetime  
+- Trim whitespace and clean text fields  
+- Handle multi-currency values (USD → INR using exchange rates)  
+- Join fact and dimension tables to create analysis-ready datasets  
 
-![KPI Dashboard](https://github.com/arpitdalal7/ai-supplychain-analytics/raw/main/screenshots/kpis.png)
+**Example prompt used in Quadratic:**
 
----
+> “Create Python code that loads data from `fact_order_line`, `dim_products`, `dim_customers`, and `exchange_rate`, cleans IDs, merges tables, and calculates total amounts in INR.”
 
-## 💡 Business Insights {#insights}
-
-**AI Prompt → Instant Strategic Answers:**
-
-### **Prompt Examples:**
-```
-1. "Top 5 customers by value + OTIF% + city"
-2. "Categories with highest backorders"
-3. "Metro vs Non-Metro service gaps" 
-4. "Revenue loss = backorder_qty × price"
-```
-
-### **Key Findings:**
-```
-❌ **Non-Metro Gap**: -14% In-Full vs Metro cities
-❌ **Beverages Category**: Highest backorders (1,250 units)
-⚠️ **2 Customers**: Consistently <85% OTIF
-💰 **Revenue Risk**: ₹12.5M from undelivered orders
-📈 **Week 3 Peak**: 35-40% weekly revenue
-```
-
-![Business Analysis](https://github.com/arpitdalal7/ai-supplychain-analytics/raw/main/screenshots/business-questions.png)
+This reduces manual coding time from ~30 minutes to ~2 minutes per transformation.
 
 ---
 
-## 🧠 AI Productivity Boost {#ai-boost}
+## 📊 Key Supply Chain KPIs
 
-**Traditional vs AI Workflow:**
+The pipeline automatically computes **15+ KPIs**, including:
 
-| Task | Manual | AI | Speedup |
-|------|--------|----|---------|
-| **SQL Joins** | 45min | **2min** | **22x** |
-| **Data Cleaning** | 60min | **3min** | **20x** |
-| **KPI Charts** | 30min | **1min** | **30x** |
-| **Full Analysis** | **4hrs** | **15min** | **16x** |
+### Order Performance
 
-**Total Annual Savings:** **180+ hours** of manual work.
+- Total Orders  
+- Total Order Lines  
+- Line Fill Rate (% of lines delivered completely)  
+- Volume Fill Rate (% of ordered quantity delivered)
 
----
+### Delivery Performance
 
-## 🚀 15-Min Complete Setup {#setup}
+- On-Time Delivery (OT%)  
+- In-Full Delivery (IF%)  
+- On-Time-In-Full (OTIF%)  
+- Order Cycle Time (days from order to delivery)  
+- Average Delivery Delay (for late orders)
 
-### **1. Database (5min)**
-```
-supabase.com → New Project (Free!)
-database/schema.sql → Run in SQL Editor
-```
+### Variability & Risk
 
-### **2. n8n Automation (5min)**
-```
-npm install -g n8n
-n8n start
-→ Import workflows/email_to_db.json
-→ Add Gmail + Supabase credentials
-→ Activate workflow
-```
+- Lead Time Variability  
+- Category Demand Variability  
+- Total Backorder Quantity  
+- Perfect Order Rate  
+- Backorder Rate  
+- Delivery Reliability Index (composite score)
 
-### **3. Sample Data (2min)**
-```
-python scripts/load_sample_data.py
-```
+### OTIF – Core Metric
 
-### **4. AI Analysis (3min)**
-```
-Quadratic.to → New Workbook
-→ Connect Supabase
-→ Import analysis.grid
-→ Run prompts → Get insights!
-```
+\[
+\text{OTIF} = \frac{\text{Orders delivered on time AND in full}}{\text{Total Orders}} \times 100
+\]
 
-**🎉 Live in 15 minutes!**
+**Benchmarks:**
+
+- 85% → Acceptable  
+- 90% → Excellent  
+- 95% → World-class  
 
 ---
 
-## 📁 Repository Files {#files}
+## 🔎 Business Insights Generated
 
-```
-ai-supplychain-analytics/
-├── workflows/
-│   └── email_to_db.json           # n8n automation
+Using the AI-powered analytics layer, the system can answer questions like:
+
+- Which product categories struggle most with fulfillment?  
+- Which customers consistently miss OTIF targets?  
+- Where is lead-time variability highest?  
+- How do metro vs non-metro customers compare on OTIF, backorders, and delays?  
+- Do longer delivery delays correlate with larger backorders?  
+- Which customers are improving or worsening over time?
+
+### Example Insight – Metro vs Non-Metro
+
+- In-Full %: Metro 92% vs Non-metro 78%  
+- On-Time %: Metro 88% vs Non-metro 86%  
+- Backorder Qty and cycle time are higher for non-metro locations  
+
+**Conclusion:** Non-metro regions face greater fulfillment challenges, indicating potential inventory allocation and logistics optimization opportunities.
+
+---
+
+## ⚙️ Productivity Impact – AI vs Traditional Analytics
+
+### Traditional Analytics
+
+- Write SQL queries: 10–15 min  
+- Write Python transformation code: 20–25 min  
+- Build visualizations: 15–20 min  
+- Debug & validate: 10–15 min  
+
+> **Total time:** ~55–75 minutes per analysis cycle
+
+### AI-Assisted Workflow (Quadratic)
+
+- Write natural language prompt: ~2 min  
+- AI generates code: ~30 sec  
+- Run and visualize results: ~30 sec  
+- Review and refine: ~2 min  
+
+> **Total time:** ~5 minutes per analysis cycle  
+> **Productivity gain:** ~12–17× faster
+
+**Key idea:** AI accelerates the workflow but does not replace core data skills.
+
+---
+
+## ✅ Project Outcomes
+
+### Technical Outcomes
+
+- Fully automated data ingestion from email to database  
+- Reduced data availability time from ~45 minutes to ~2 minutes  
+- Achieved 100% consistency in data handling  
+- Implemented scalable, cloud-based analytics infrastructure  
+- Automated computation of 15+ supply chain KPIs  
+
+### Business Outcomes
+
+- Real-time supply chain performance visibility  
+- Faster identification of late deliveries and backorders  
+- Customer-level and category-level service monitoring  
+- Quantification of revenue risk due to undelivered/late orders  
+- Better understanding of metro vs non-metro performance gaps  
+
+### Estimated Annual Impact
+
+- ~180 hours saved in manual data processing  
+- ~95% reduction in data errors  
+- Decision-making moved from weekly reports to near real time  
+
+---
+
+## 🧠 Skills Demonstrated
+
+### Data & Analytics
+
+- Supply chain KPI definition and calculation  
+- Performance benchmarking and root-cause analysis  
+- Multi-dimensional analytics (customer, product, location, time)
+
+### Data Engineering
+
+- ETL pipeline design and implementation  
+- Data cleaning and transformation at scale  
+- Multi-source data integration (CSV, email, DB)  
+- Feature engineering for analytics
+
+### Workflow Automation
+
+- n8n workflow design and configuration  
+- Email integration and file extraction  
+- Data validation, error handling, and notifications
+
+### Database & Modeling
+
+- PostgreSQL schema design (star schema)  
+- Dimensional modeling for analytics  
+- SQL query optimization  
+- Cloud database configuration (Supabase)
+
+### AI & Coding
+
+- Prompt engineering for code generation  
+- Python for data manipulation (pandas, numpy)  
+- SQL for analytical queries  
+- Validation and refinement of AI-generated code  
+
+---
+
+## 📁 Repository Structure (Suggested)
+
+```bash
+.
+├── n8n_workflows/
+│   └── email_to_database_workflow.json
 ├── database/
-│   └── schema.sql                # Star schema (facts + dims)
+│   ├── schema_creation.sql
+│   └── sample_data/
 ├── quadratic/
-│   └── analysis.grid             # AI workbook + prompts
-├── scripts/
-│   └── load_sample_data.py       # Test data loader
-├── screenshots/                  # Visual demos
+│   ├── supply_chain_analysis.grid
+│   └── prompts_used.md
+├── screenshots/
+│   ├── n8n-workflow.png
+│   ├── kpi-dashboard.png
+│   └── metro_vs_non_metro.png
+├── notebooks/
+│   └── exploratory_analysis.ipynb
 └── README.md
 ```
 
-**Everything you need to run today!** 👆
+You can adjust this to match your actual file layout.
 
 ---
 
-## 🎯 Actionable Recommendations {#recommendations}
+## 🚀 How to Run
 
-**From Data → Decisions:**
+1. **Clone the repository**
 
-1. **Fix Non-Metro Fulfillment** (-14% In-Full gap)
-2. **Prioritize Beverages** (highest backorders)
-3. **Alert on Demand Surges** (>30% week-over-week)
-4. **Track 2 Failing Customers** (OTIF <85%)
-5. **Weekly Lead Time Review** (variability >3 days)
+```bash
+git clone https://github.com/<your-username>/<your-repo-name>.git
+cd <your-repo-name>
+```
+
+2. **Set up Supabase / PostgreSQL**
+
+- Create a PostgreSQL instance (e.g., via Supabase)  
+- Run the SQL scripts in `database/schema_creation.sql`  
+- Configure connection credentials (host, port, DB, user, password)
+
+3. **Import n8n workflow**
+
+- Import the JSON from `n8n_workflows/email_to_database_workflow.json`  
+- Configure:
+  - Gmail credentials / IMAP settings  
+  - Database credentials for PostgreSQL  
+- Activate the workflow
+
+4. **Configure Quadratic**
+
+- Connect Quadratic to the same PostgreSQL instance  
+- Open the `supply_chain_analysis.grid` file  
+- Run the prompts/notebooks to compute KPIs and generate insights  
+
+5. **Explore KPIs & Insights**
+
+- Use Quadratic dashboards / charts for:
+  - OTIF trends
+  - Metro vs non-metro performance
+  - Customer and product-level service metrics
 
 ---
 
-## 🙌 Credits & Tools
+## 🔮 Future Enhancements
 
-**Mentorship:**
-[![Codebasics](https://img.shields.io/badge/Codebasics-YouTube-red?style=for-the-badge&logo=youtube)](https://youtube.com/c/codebasics)
+Planned / possible extensions:
 
-**Tech Stack:**
-[n8n](https://n8n.io) | [Supabase](https://supabase.com) | [Quadratic](https://quadratic.to)
-
----
-
-## 📄 License
-
-[![MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
-**MIT License** - Free for commercial/personal use.
+- Predictive analytics for demand forecasting  
+- Real-time alerts when OTIF or other KPIs fall below thresholds  
+- Integration with inventory management / ERP systems  
+- Advanced dashboards in Power BI / Tableau / Metabase  
+- Machine learning models for delivery time and backorder prediction  
 
 ---
 
-<div align="center">
-  
-  **👨‍💼 Arpit Dalal**  
-  [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/arpitdalal9)
-  [![GitHub](https://img.shields.io/badge/GitHub-Star-black?style=for-the-badge&logo=github)](https://github.com/arpitdalal7/ai-supplychain-analytics)
-  
-  <br>⭐ **Star if helpful!** 🚀
-  
-</div>
+## 📚 Learning & Takeaways
+
+- Automation is essential: Manual data handling doesn’t scale.  
+- AI is a **productivity accelerator**, not a replacement for fundamentals.  
+- Good data architecture (star schema, clean joins) is critical for fast analytics.  
+- Understanding business context (OTIF, fill rates, service levels) is what converts dashboards into real business value.
+
+---
+
+## 📎 References & Credits
+
+- Project inspired by Codebasics’ end-to-end analytics curriculum  
+- Tools used: n8n, Supabase, Quadratic, Python, SQL, Git/GitHub  
+
+---
+
+## 🤝 Connect
+
+If you’d like to discuss supply chain analytics, workflow automation, or AI-assisted data projects, feel free to connect with me on LinkedIn.
+
+```  
+
+You can now paste this directly into `README.md` in your GitHub repo and then customize small parts like the repo URL, your name, and your LinkedIn profile link.
